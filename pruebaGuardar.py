@@ -53,7 +53,7 @@ try:
                 'post_score': post.score,
                 'comments': comments
             }
-
+            
             # Insertar el documento del post en la colección
             collection.insert_one(post_data)
         if cnt > 10:  # Limitar a 10 publicaciones para pruebas

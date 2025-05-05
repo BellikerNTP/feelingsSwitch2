@@ -18,7 +18,7 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 analyzer = SentimentIntensityAnalyzer()
 
 # Palabras clave para buscar
-keywords = ["switch 2 price", "pricey", "expensive", "new games prices", "cheap"]
+keywords = ["switch 2 price", "pricey", "expensive", "new games prices", "cheap","buy","price","cost","costly","worth it","worth","value","price tag","price point","price range","price drop","price increase","price comparison","price analysis"]
 
 # Función para analizar los comentarios
 def get_all_comments(comment):
@@ -33,12 +33,12 @@ def get_all_comments(comment):
 
 try:
     # Configurar base de datos y colección en MongoDB
-    db = client['reddit_switch2']
+    db = client['reddit_switch3']
     collection = db['nintendo_switch_posts']
 
     # Acceder al subreddit
     subreddit = reddit.subreddit("NintendoSwitch2")
-    qntPosts = 1000  # Número de publicaciones a buscar
+    qntPosts = 300  #Número de publicaciones a buscar
     cnt = 0  # Contador de publicaciones que cumplen el criterio
 
     for post in subreddit.hot(limit=qntPosts):  # Cambia 'hot' por 'new' o 'top' si lo prefieres
@@ -49,8 +49,8 @@ try:
         matching_comments = [comment for comment in comments if any(keyword.lower() in comment.body.lower() for keyword in keywords)]
         match_percentage = len(matching_comments) / len(comments) if comments else 0
 
-        # Condición: 15% de los comentarios o el título contiene palabras clave
-        if any(keyword.lower() in post.title.lower() for keyword in keywords) or match_percentage >= 0.15:
+        # Condición: 50% de los comentarios o el título contiene palabras clave
+        if any(keyword.lower() in post.title.lower() for keyword in keywords) or match_percentage >= 0.5:
             cnt += 1
             processed_comments = [get_all_comments(comment) for comment in comments]  # Analizar todos los comentarios
             post_data = {

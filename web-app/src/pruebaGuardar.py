@@ -34,7 +34,7 @@ def get_all_comments(comment):
     return comment_data
 
 try:
-    db = client['reddit_data_Iker']
+    db = client['reddit_data']
     collection = db['nintendo_switch_posts']
 
     subreddit = reddit.subreddit("NintendoSwitch2")
@@ -79,7 +79,6 @@ try:
                 'post_date': datetime.utcfromtimestamp(post.created_utc).strftime('%Y-%m-%d %H:%M:%S'),
                 'comments': comments
             }
-            
             collection.insert_one(post_data)
 
     print(f"Se guardaron '{cnt}' posts en MongoDB.")

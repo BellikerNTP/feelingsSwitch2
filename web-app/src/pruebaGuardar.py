@@ -56,6 +56,11 @@ try:
             continue
 
         if any(keyword in post.title.lower() for keyword in keywords):
+            existing_post = collection.find_one({'titulo': post.title})
+            if existing_post:
+                print(f"El post '{post.title}' ya existe en la base de datos.")
+                continue  # Saltar a la siguiente iteración
+
             cnt += 1
             if cnt > cntMax:
                 break
@@ -77,7 +82,7 @@ try:
             
             collection.insert_one(post_data)
 
-    print("Datos guardados en MongoDB.")
+    print(f"Se guardaron '{cnt}' posts en MongoDB.")
 
 except Exception as e:
     print("Error al conectar a MongoDB:", e)

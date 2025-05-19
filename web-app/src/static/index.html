@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameter Input</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Set Parameters</h1>
+        <form id="parameterForm">
+            <label for="qntPosts">Number of Posts (qntPosts):</label>
+            <input type="number" id="qntPosts" name="qntPosts" required>
+
+            <label for="cntMax">Maximum Count (cntMax):</label>
+            <input type="number" id="cntMax" name="cntMax" required>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
+
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+
+            <button type="submit">Accept</button>
+        </form>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

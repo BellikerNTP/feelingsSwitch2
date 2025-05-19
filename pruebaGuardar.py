@@ -9,7 +9,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 sentiment_analyzer = pipeline(
     "sentiment-analysis",
     model="distilbert-base-uncased-finetuned-sst-2-english",
-    device=device
+    device=deviceg
 )
 
 # Configuración de Reddit
